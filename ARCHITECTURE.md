@@ -275,14 +275,16 @@ terraform/s3_evidence_store/
 
 ### Backend
 - Passwords hashed with bcrypt (10 salt rounds)
-- Session secret should be moved to environment variable
+- Session secret loaded from `SESSION_SECRET` environment variable
+- Secure cookies enabled in production (httpOnly, secure flag)
+- Session expiry set to 24 hours
 - In-memory storage not suitable for production
 - No HTTPS configured (add in production)
 
 ### Infrastructure
-- S3 buckets use server-side encryption
-- Evidence store blocks all public access
-- Evidence store prevents object deletion
+- S3 buckets use server-side encryption (AES256)
+- Both buckets block all public access
+- Evidence store prevents object deletion (explicit Deny policy)
 - IAM role-based access for CI/CD
 
 ---
