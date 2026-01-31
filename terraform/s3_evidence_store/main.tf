@@ -4,9 +4,9 @@ resource "aws_s3_bucket" "evidence_store" {
   bucket = var.bucket_name
 
   tags = {
-    Name        = var.bucket_name
-    Project     = "Unified Compliance"
-    ManagedBy   = "Terraform"
+    Name      = var.bucket_name
+    Project   = "Unified Compliance"
+    ManagedBy = "Terraform"
   }
 }
 
@@ -23,7 +23,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "evidence_store_en
 
   rule {
     apply_server_side_encryption_by_default {
-      sse_algorithm     = "AES256"
+      sse_algorithm = "AES256"
     }
   }
 }
